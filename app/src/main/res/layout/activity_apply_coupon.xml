@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context="code.product.ApplyCoupon">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rlcontact"
+        android:layout_height="@dimen/_45sdp">
+
+        <ImageView
+            android:id="@+id/ivback"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_9sdp"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_50sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:text="@string/coupons"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"
+            android:textStyle="bold" />
+
+
+
+
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/lightgray"/>
+    <TextView
+        android:id="@+id/tvbest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bestcopounforyou"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:textColor="@color/darkGrey"
+        android:layout_marginTop="@dimen/_15sdp"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rclcopon"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <TextView
+        android:id="@+id/tvnodata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sorry, no coupon available currently"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:textColor="@color/darkGrey"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_200sdp"/>
+
+
+
+
+
+
+</LinearLayout>

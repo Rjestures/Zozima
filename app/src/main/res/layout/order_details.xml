@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+
+            android:id="@+id/ivproductImage"
+            android:layout_marginVertical="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_width="@dimen/_90sdp"
+            android:scaleType="fitXY"
+            android:layout_height="@dimen/_130sdp"/>
+
+        <TextView
+            android:id="@+id/tvorderstatuts"
+            android:layout_width="match_parent"
+            android:background="#10b468"
+            android:text="@string/Ordered"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:paddingTop="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_toRightOf="@+id/ivproductImage"
+            android:layout_height="@dimen/_20sdp"/>
+
+        <TextView
+            android:id="@+id/tvsku"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_25sdp"
+            android:textSize="@dimen/_11sdp"
+            android:text="sku"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_below="@+id/tvorderstatuts"
+            android:textColor="@color/colorAccent"
+            android:textStyle="normal"
+            android:visibility="gone"
+            android:layout_toRightOf="@+id/tvskuu"
+            />
+
+
+        <TextView
+
+            android:layout_below="@+id/tvorderstatuts"
+            android:id="@+id/tvskuu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:layout_toRightOf="@+id/ivproductImage"
+            android:text="@string/sku"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:fontFamily="@font/montserrat_regular"
+            android:paddingRight="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textStyle="normal"
+            android:visibility="gone"
+
+            />
+
+        <TextView
+            android:id="@+id/tvproductname"
+            android:layout_below="@+id/tvorderstatuts"
+            android:layout_toRightOf="@+id/ivproductImage"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_23sdp"
+            android:text="Alluring Women's Tops"
+            android:textColor="@color/black"
+            android:lines="1"
+            android:textSize="@dimen/_12sdp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvproductprice"
+            android:layout_below="@+id/tvproductname"
+            android:layout_toRightOf="@+id/ivproductImage"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="569"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+<!--
+        <TextView
+            android:id="@+id/tvsize"
+            android:layout_below="@+id/tvproductname"
+            android:layout_toRightOf="@+id/tvproductprice"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="size"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+-->
+
+        <TextView
+            android:layout_below="@+id/tvproductname"
+            android:layout_toRightOf="@+id/tvproductprice"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="l"
+            android:id="@+id/tvsizee"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvqty"
+            android:layout_below="@+id/tvproductname"
+            android:layout_toRightOf="@+id/tvsizee"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/qty"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvqtyy"
+            android:layout_below="@+id/tvproductname"
+            android:layout_toRightOf="@+id/tvqty"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="1"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvcancel"
+            android:layout_below="@+id/tvproductprice"
+            android:layout_toRightOf="@+id/ivproductImage"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/cancele"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="#FB0073"
+            android:background="@drawable/selectsizebackground"
+            android:layout_height="@dimen/_30sdp"/>
+
+        <TextView
+
+            android:id="@+id/tvTrackk"
+            android:layout_below="@+id/tvproductprice"
+            android:layout_toRightOf="@+id/tvcancel"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/track"
+            android:elevation="@dimen/_5sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_gradient_pink"
+            android:layout_height="@dimen/_30sdp"/>
+         <TextView
+            android:id="@+id/tvTrackkk"
+            android:layout_below="@+id/tvproductprice"
+            android:layout_toRightOf="@+id/tvcancel"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/track"
+            android:textStyle="bold"
+            android:elevation="@dimen/_5sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_gradient_pink"
+            android:layout_height="@dimen/_30sdp"/>
+
+
+        <TextView
+            android:id="@+id/tvreturn"
+            android:layout_below="@+id/tvproductprice"
+            android:layout_toRightOf="@+id/tvTrackk"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_marginLeft="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/retrurn"
+            android:gravity="center"
+            android:visibility="gone"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="#FB0073"
+            android:background="@drawable/selectsizebackground"
+            android:layout_height="@dimen/_30sdp"/>
+
+
+        <TextView
+            android:id="@+id/tvTrack"
+            android:layout_below="@+id/tvproductprice"
+            android:layout_toRightOf="@+id/tvcancel"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/track"
+            android:visibility="gone"
+            android:elevation="@dimen/_5sdp"
+            android:gravity="center"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:background="@drawable/rectangle_gradient_pink"
+            android:layout_height="@dimen/_30sdp"/>
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

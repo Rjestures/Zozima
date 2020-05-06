@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/_33sdp"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dishpatch_view">
+
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        app:srcCompat="@drawable/dispatch"
+ />
+
+    <TextView
+        android:layout_gravity="center"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:text="@string/dispatch"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/darkGrey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</LinearLayout>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black"
+    android:layout_height="@dimen/_75sdp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="@dimen/_75sdp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/back"
+            android:background="@drawable/ic_clear_black_24dp"
+            android:layout_marginLeft="@dimen/_220sdp"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="@color/white"
+            android:id="@+id/text"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This will be collected at the time of delivery. Zozima
+  with then transfer your margin directly to your bank."/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

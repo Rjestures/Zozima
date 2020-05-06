@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:background="@color/white"
+        android:elevation="@dimen/_4sdp"
+        android:padding="@dimen/_10sdp">
+
+        <RelativeLayout
+            android:id="@+id/rlordered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/ivcircle"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/ic_circle_grey" />
+
+            <ImageView
+                android:id="@+id/line1"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/ivcircle"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@mipmap/greyline" />
+
+            <TextView
+                android:id="@+id/tvOrdercancelled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="Ordered"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrdercancelle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_toRightOf="@+id/tvOrdercancelled"
+                android:text="Order Cancelled"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvOrdercancelle"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/date"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvReasn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvOrdercancelled"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="@string/reson"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvReason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvOrdercancelled"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_toRightOf="@+id/tvReasn"
+                android:text="Reason"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rlshipped"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlordered">
+
+            <ImageView
+                android:id="@+id/ivOrderShipped"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/ic_circle_grey" />
+
+            <ImageView
+                android:id="@+id/line2"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/ivOrderShipped"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@mipmap/greyline" />
+
+
+            <TextView
+                android:id="@+id/tvOrderShipped"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="Shipped"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrderedShippedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvOrderShipped"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/date"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rldelivered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlshipped">
+
+            <ImageView
+                android:id="@+id/ivOrderedDelivered"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/ic_circle_grey" />
+
+            <ImageView
+                android:id="@+id/line3"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/ivOrderedDelivered"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@mipmap/greyline" />
+
+
+            <TextView
+                android:id="@+id/tvOrderDeliverd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="Delivered"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrderedDelivereDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvOrderDeliverd"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/date"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/rlreturn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivOrderReturn"
+                android:layout_width="@dimen/_10sdp"
+                android:layout_height="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/ic_circle_grey" />
+
+            <ImageView
+                android:id="@+id/line4"
+                android:layout_width="@dimen/_2sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_below="@+id/ivOrderReturn"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@mipmap/greyline" />
+
+
+            <TextView
+                android:id="@+id/tvOrderReturned"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:text="Returned"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOrderReturnDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvOrderReturned"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/date"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

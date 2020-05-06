@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.zozima.android">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.zozima.android.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name="code.common.MyApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/logo"
+        android:screenOrientation="portrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="n">
+        <activity android:name="code.product.ProductGalleryActivity"></activity>
+        <activity android:name="code.searching.SearchListActivity" />
+        <activity android:name="code.product.ApplyCoupon" />
+        <activity android:name="code.fragment.FeedBack" />
+        <activity android:name="code.profile.PrivacyPolicy" />
+        <activity android:name="code.profile.TermsCondition" />
+        <activity android:name="code.profile.AddLungbuage" />
+        <activity android:name="code.profile.Abouts" />
+        <activity android:name="code.order.ReturnDetails" />
+        <activity android:name="code.wishlistSharedCatlogue.MySharedCatalogs" />
+        <activity android:name="code.senderInformation.SenderListingActivity" />
+        <activity android:name="code.basic.Tracking" />
+        <activity android:name="code.orderTrackingActivity.TrackingActivity" />
+        <activity android:name="code.order.OrderListActivity" />
+        <activity android:name="code.order.OrderDetailActivity" />
+        <activity android:name="code.orderTrackingActivity.SelectReasonAcitivity" />
+        <activity android:name="code.order.OrderPlaceActivity" />
+        <activity android:name="code.searching.SearchActivity" />
+        <activity android:name="code.profile.HelpActivity" />
+        <activity android:name="code.basic.WishlistAcitvity" />
+        <activity android:name="code.order.OderSummary" />
+        <activity android:name="code.profile.EditAddressActivity" />
+        <activity android:name="code.address.AddNewAddressActivity" />
+        <activity android:name="code.address.ShippingAddress" />
+        <activity android:name="code.basic.AddMarginActivity" />
+        <activity android:name="code.subcatageory.SubCategoryCatlogActivity" />
+        <activity android:name="code.basic.CartAcivity" />
+        <activity android:name="code.basic.CheckAvailabilityAcivity" />
+        <activity android:name="code.subcatageory.SubCategoryActivity" />
+        <activity android:name="code.profile.ListBankDetailActivity" />
+        <activity android:name="code.basic.BankDetails" />
+        <activity android:name="code.profile.EditProfile" />
+        <activity android:name="code.basic.CollectionCategory" />
+        <activity android:name="code.main.MainActivity" />
+        <activity android:name="code.login.OtpVerificationActivity" />
+        <activity android:name="code.product.ProductDetailsActivity" />
+        <activity android:name="code.product.ProductAddToCardActivity" />
+        <activity android:name="code.notification.NotificationList" />
+        <activity android:name="code.notification.NotificationActivity" />
+        <activity android:name="code.notification.NotificationDetail" />
+        <activity
+            android:name="code.basic.SplashActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name="code.basic.WelcomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="code.login.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/black" /> <!-- Firebase Notifications -->
+        <service
+            android:name="code.common.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name="code.common.FirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

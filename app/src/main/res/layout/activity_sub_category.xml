@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="code.subcatageory.SubCategoryActivity"
+    >
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+
+        <RelativeLayout
+            android:id="@+id/rlHeader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivback"
+                android:layout_width="30dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:srcCompat="@drawable/back" />
+
+            <ImageView
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@mipmap/full_logo" />
+
+            <ImageView
+                android:id="@+id/ivcart"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                app:srcCompat="@drawable/cartt" />
+
+            <ImageView
+                android:id="@+id/ivFavourite"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_35sdp"
+                android:layout_toLeftOf="@+id/ivcart"
+                app:srcCompat="@drawable/ic_fav_unselected" />
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="@dimen/_17sdp"
+                android:layout_height="@dimen/_17sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/_6sdp"
+                android:layout_toLeftOf="@+id/ivFavourite"
+                app:srcCompat="@drawable/ic_search" />
+            <TextView
+                android:textSize="@dimen/_8sdp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:id="@+id/tvCount"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:text=""
+                android:visibility="gone"
+                android:background="@mipmap/circle"
+                android:layout_marginTop="@dimen/_3sdp"
+
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_alignParentRight="true"
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:id="@+id/vizewe"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/cardView"
+        android:background="@color/lightGrey" />
+
+
+<!--
+    <ImageView
+        android:id="@+id/iv_bannerImage"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_170sdp" />
+-->
+
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tvnoproductt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="@dimen/_14sdp"
+                android:textColor="@color/black"
+                android:text="@string/oops"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_220sdp"
+                android:id="@+id/ivloader"
+                android:layout_marginLeft="@dimen/_110sdp"
+                />
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="code.profile.HelpActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rlcontact"
+        android:layout_height="@dimen/_50sdp">
+
+        <ImageView
+            android:id="@+id/ivback"
+            android:layout_width="30dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_9sdp"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:text="@string/contactus"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+
+
+
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:background="@color/lightgray"
+        android:layout_height="@dimen/_1sdp"/>
+    <LinearLayout
+        android:id="@+id/lcontactnumber"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_height="@dimen/_48sdp"
+        android:background="@drawable/help"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:text="@string/call"
+            android:gravity="center"
+            android:textColor="@color/bluee"
+            android:textSize="@dimen/_12sdp"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/email"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_height="@dimen/_48sdp"
+        android:background="@drawable/help"
+        >
+        <TextView
+            android:id="@+id/tvemail"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:text="@string/helpemail"
+            android:gravity="center"
+            android:textColor="@color/bluee"
+            android:textSize="@dimen/_12sdp"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:lineSpacingExtra="@dimen/_2sdp"
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:text="@string/helpp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp"
+            android:layout_height="match_parent"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

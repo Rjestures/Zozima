@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:padding="@dimen/_12sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/editsender"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp"/>
+
+
+        <TextView
+            android:id="@+id/tvnamee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorAccent"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <EditText
+            android:id="@+id/edtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:background="@null"
+            android:layout_marginTop="@dimen/_2sdp"/>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/_5sdp"/>
+
+
+        <TextView
+            android:id="@+id/tvrequiredd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/required"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/red"
+            android:visibility="gone"
+
+            />
+
+
+
+        <TextView
+            android:id="@+id/tvnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PhoneNumber"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/darkGrey"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+        <EditText
+            android:id="@+id/edtNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:background="@null"
+            android:maxLength="10"
+            android:inputType="number"
+            android:layout_marginTop="@dimen/_2sdp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorAccent"
+            android:layout_marginTop="@dimen/_5sdp"/>
+
+
+        <TextView
+            android:id="@+id/tvrequired"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/required"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/red"
+            android:visibility="gone"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tvsubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Submit"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/colorAccent"
+            android:layout_marginLeft="@dimen/_130sdp"
+            android:layout_marginTop="@dimen/_20sdp"/>
+
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

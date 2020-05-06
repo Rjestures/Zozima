@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:orientation="vertical">
+
+        <code.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:text="Payment Method"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16sdp" />
+        <code.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selectt"
+            android:textStyle="bold"
+            android:textColor="@color/darkGrey"
+            android:textSize="@dimen/_14sdp" />
+        <code.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/question"
+            android:layout_marginTop="@dimen/_10sdp"
+       android:textStyle="bold"
+            android:textColor="@color/darkGrey"
+            android:textSize="@dimen/_14sdp" />
+        <code.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selecttt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/darkGrey"
+            android:textSize="@dimen/_14sdp" />
+        <code.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/selectttt"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/darkGrey"
+            android:textSize="@dimen/_14sdp" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"/>
+
+        <code.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ok"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:layout_marginLeft="@dimen/_180sdp"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_14sdp" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/_10sdp"/>
+
+
+</LinearLayout>

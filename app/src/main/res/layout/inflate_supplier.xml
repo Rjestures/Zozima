@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="@dimen/_200sdp">
+        <TextView
+            android:id="@+id/tvsupplier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/supplier"
+            android:textSize="@dimen/_14sdp"
+            android:lineSpacingExtra="@dimen/_2sdp"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
+        <TextView
+            android:id="@+id/tvcancel"
+            android:layout_below="@+id/tvsupplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANCEL"
+            android:textColor="@color/colorAccent"
+            android:layout_marginLeft="@dimen/_75sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="@dimen/_12sdp"/>
+
+        <TextView
+            android:id="@+id/tvyes"
+            android:layout_below="@+id/tvsupplier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="YES"
+            android:layout_toRightOf="@+id/tvcancel"
+            android:textColor="@color/colorAccent"
+            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:textSize="@dimen/_12sdp"/>
+
+    </RelativeLayout>
+</LinearLayout>

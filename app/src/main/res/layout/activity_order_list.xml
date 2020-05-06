@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="code.order.OrderListActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp">
+
+
+            <ImageView
+                android:id="@+id/ivback"
+                android:layout_width="30dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:srcCompat="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="@string/oderlist"
+                android:textColor="#050505"
+                android:textSize="@dimen/_17sdp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cardView"
+        android:layout_marginTop="@dimen/_5sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdorderd"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/tvorderd"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:background="@color/colorAccent"
+                        android:gravity="center"
+                        android:text="@string/Ordered"
+                        android:font="@font/montserrat_regular"
+                        />
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/shipped"
+                    android:layout_width="@dimen/_55sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_toRightOf="@+id/crdorderd">
+
+                    <TextView
+                        android:id="@+id/tvshippid"
+                        android:textColor="@color/greyText"
+                        android:layout_width="@dimen/_55sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:background="@drawable/background"
+                        android:gravity="center"
+                        android:text="@string/shiped" />
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/crdcanceled"
+                    android:layout_width="@dimen/_55sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_toRightOf="@+id/shipped">
+
+                    <TextView
+                        android:id="@+id/tvdelivered"
+                        android:layout_width="@dimen/_55sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:background="@drawable/background"
+                        android:gravity="center"
+                        android:text="@string/deliverd" />
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dl"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_toRightOf="@+id/crdcanceled">
+
+                    <TextView
+                        android:id="@+id/tvcanceled"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:background="@drawable/background"
+                        android:gravity="center"
+                        android:text="@string/cancelled" />
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/rll"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_below="@+id/crdorderd"
+                    android:layout_marginLeft="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+                    <TextView
+                        android:id="@+id/tvreturn"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:background="@drawable/background"
+                        android:gravity="center"
+                        android:text="@string/resturn" />
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rll"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                   >
+
+                    <SearchView
+                        android:id="@+id/search"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/background"
+                        android:elevation="@dimen/_4sdp"
+                        android:iconifiedByDefault="false"
+                        android:queryHint="@string/searchcustomerid"
+                        android:searchHintIcon="@null"
+                        android:textSize="@dimen/_8sdp">
+
+                        <requestFocus />
+                    </SearchView>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/rl" />
+
+            <ImageView
+                android:id="@+id/ivloader"
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_110sdp"
+                android:layout_marginTop="@dimen/_210sdp"
+                android:visibility="gone" />
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

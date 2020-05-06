@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+    <RelativeLayout
+        android:id="@+id/rr_header"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp">
+
+        <!--<Gallery
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/gallery2"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />-->
+
+        <ImageView
+            android:id="@+id/ivCross"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:background="@drawable/ic_clear_black_24dp"/>
+    </RelativeLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_below="@+id/rr_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_450sdp"
+        android:id="@+id/imageView40"
+        />
+
+    <com.viewpagerindicator.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:layout_below="@+id/imageView40"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="18dip"
+        app:centered="true"
+        app:fillColor="@color/colorPrimary"
+        app:pageColor="#fff"
+        />
+
+</RelativeLayout>

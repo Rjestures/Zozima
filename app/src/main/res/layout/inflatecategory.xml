@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:padding="@dimen/_4sdp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:checked="false"
+            android:id="@+id/checkBox"
+            android:backgroundTint="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/_1sdp"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/colorAccent"
+            />
+
+        <TextView
+            android:id="@+id/tvfilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textAlignment="gravity"
+            android:gravity="center_vertical"
+            android:layout_margin="@dimen/_1sdp"
+            android:padding="@dimen/_2sdp"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textAlignment="gravity"
+        android:gravity="center_vertical"
+        android:layout_margin="@dimen/_1sdp"
+        android:padding="@dimen/_2sdp"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/black"/>
+
+<!--
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/rvsubcategory"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+-->
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:background="@color/lightgray"/>
+
+
+
+</LinearLayout>

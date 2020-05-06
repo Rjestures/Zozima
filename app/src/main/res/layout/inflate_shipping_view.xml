@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/lightgray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rectangle_lightred">
+
+    <ImageView
+        android:id="@+id/ivshipping"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        app:srcCompat="@drawable/shiping"
+        android:tint="@color/colorAccent"/>
+
+    <TextView
+        android:id="@+id/shipincharge"
+        android:layout_gravity="center"
+        android:text="@string/freeshippping"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_10sdp"
+      />
+
+</LinearLayout>
+

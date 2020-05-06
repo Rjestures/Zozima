@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+  >
+
+    <RelativeLayout
+        android:id="@+id/rlNotification"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp">
+
+
+        <ImageView
+            android:id="@+id/ivback"
+            android:layout_width="30dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:srcCompat="@drawable/back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/notification"
+            android:textColor="#050505"
+            android:textSize="@dimen/_17sdp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:id="@+id/view2"
+        android:layout_below="@+id/rlNotification"
+        android:background="@color/grey"/>
+
+    <RelativeLayout
+        android:id="@+id/ll"
+        android:background="@color/lightgray"
+        android:orientation="vertical"
+        android:layout_below="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_9sdp">
+
+        <TextView
+            android:id="@+id/tvUnselect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/collections"/>
+
+        <TextView
+            android:id="@+id/tvUnselecvt"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:text="@string/unselect"/>
+
+
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ll"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerview"
+        >
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <ImageView
+        android:layout_width="@dimen/_80sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_250sdp"
+        android:id="@+id/ivloader"
+        android:layout_marginLeft="@dimen/_110sdp"
+        />
+
+    <LinearLayout
+        android:id="@+id/llsave"
+        android:elevation="@dimen/_4sdp"
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_alignParentBottom="true"
+        android:background="#F15D8F"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/_100sdp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/savechanges"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

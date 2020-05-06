@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enterCode"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/black"
+       />
+
+    <TextView
+        android:id="@+id/tvMobileNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_gravity="center"
+        android:textColor="@color/colorPrimary"
+       />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_65sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <code.view.CustomEditText
+            android:id="@+id/etCode1"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toLeftOf="@+id/etCode2"
+            android:maxLength="1"
+            android:gravity="center"
+            android:elevation="@dimen/_5sdp"
+            android:inputType="number"
+            android:singleLine="true"
+            android:background="@drawable/rectangle_white"
+            app:customFont="CenturyGothicBold.ttf"/>
+
+        <code.view.CustomEditText
+            android:id="@+id/etCode2"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_toLeftOf="@+id/etCode3"
+            android:maxLength="1"
+            android:gravity="center"
+            android:elevation="@dimen/_5sdp"
+            android:inputType="number"
+            android:singleLine="true"
+            android:background="@drawable/rectangle_white"
+            app:customFont="CenturyGothicBold.ttf"/>
+
+        <code.view.CustomEditText
+            android:id="@+id/etCode3"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:maxLength="1"
+            android:gravity="center"
+            android:elevation="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_toLeftOf="@+id/view"
+            android:inputType="number"
+            android:singleLine="true"
+            android:background="@drawable/rectangle_white"
+            app:customFont="CenturyGothicBold.ttf"/>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"/>
+
+        <code.view.CustomEditText
+            android:id="@+id/etCode4"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/red"
+            android:maxLength="1"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:elevation="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/view"
+            android:inputType="number"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:singleLine="true"
+            android:background="@drawable/rectangle_white"
+            app:customFont="CenturyGothicBold.ttf"/>
+
+        <code.view.CustomEditText
+            android:id="@+id/etCode5"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/red"
+            android:maxLength="1"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:elevation="@dimen/_5sdp"
+            android:inputType="number"
+            android:layout_toRightOf="@+id/etCode4"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:singleLine="true"
+            android:background="@drawable/rectangle_white"
+            app:customFont="CenturyGothicBold.ttf"/>
+
+        <code.view.CustomEditText
+            android:id="@+id/etCode6"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:textSize="@dimen/_20sdp"
+            android:textColor="@color/red"
+            android:maxLength="1"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:elevation="@dimen/_5sdp"
+            android:inputType="number"
+            android:layout_toRightOf="@+id/etCode5"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:singleLine="true"
+            android:background="@drawable/rectangle_white"
+            app:customFont="CenturyGothicBold.ttf"/>
+
+    </RelativeLayout>
+
+    <code.view.CustomButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@drawable/rectangle_gradient_pink"
+        android:text="@string/submit"
+        android:textAllCaps="false"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:textSize="@dimen/_14sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:textColor="@color/white"
+        app:customFont="CenturyGothicBold.ttf"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivTimer"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/timer"
+            android:visibility="visible" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/tvTimer"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_30sdp"
+            android:text="@string/resend_otp"
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/_13sdp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColorHint="@color/black"
+            android:background="@null"
+            android:id="@+id/tvResend"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/married"
+
+        android:title="Married"
+        android:visible="true"/>
+    <item
+        android:id="@+id/single"
+
+        android:title="Unmarried"
+        android:visible="true"/>
+    <item
+        android:id="@+id/divorced"
+
+        android:title="Divorced/Separated/Widowed"
+        android:visible="true"/>
+
+</menu>

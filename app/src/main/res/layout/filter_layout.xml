@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rllfilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp">
+
+        <TextView
+            android:id="@+id/tvfilter"
+            android:layout_width="@dimen/_250sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:text="@string/filterr"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_toEndOf="@+id/tvfilter"
+            app:srcCompat="@drawable/clear" />
+
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/lightgray" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_290sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_290sdp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_290sdp"
+                android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/llCategoryy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_2sdp"
+                                android:text="@string/price"
+                                android:textColor="@color/darkGrey"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/lightgray" />
+
+                        <LinearLayout
+                            android:id="@+id/llPrice"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_2sdp"
+                                android:text="@string/category"
+                                android:textColor="@color/darkGrey"
+                                android:textSize="@dimen/_12sdp" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/lightgray" />
+
+                        <LinearLayout
+                            android:id="@+id/llDiscount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_2sdp"
+                                android:text="@string/brand"
+                                android:textColor="@color/darkGrey"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/lightgray" />
+
+                        <LinearLayout
+                            android:id="@+id/llCollor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_marginLeft="@dimen/_15sdp"
+                                android:gravity="center_vertical"
+                                android:padding="@dimen/_2sdp"
+                                android:text="@string/color"
+                                android:textColor="@color/darkGrey"
+                                android:textSize="@dimen/_12sdp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_1sdp"
+                            android:background="@color/lightgray" />
+
+
+                    </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/llCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <!--
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Select Category"
+                                    android:textAlignment="gravity"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="@dimen/_30sdp"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:padding="@dimen/_5sdp"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textColor="@color/black"/>
+                    -->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/llColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+                    <!--
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Select Category"
+                                    android:textAlignment="gravity"
+                                    android:layout_marginTop="@dimen/_5sdp"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginLeft="@dimen/_30sdp"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:padding="@dimen/_5sdp"
+                                    android:textSize="@dimen/_12sdp"
+                                    android:textColor="@color/black"/>
+                    -->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvColor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+                </LinearLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scrollable"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:id="@+id/lllPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_7sdp">
+
+                                <CheckBox
+                                    android:id="@+id/priceCB1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:layout_marginLeft="@dimen/_5sdp"
+                                    android:buttonTint="@color/colorAccent" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:gravity="center_vertical"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="₹0 - ₹200"
+                                    android:textAlignment="gravity"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_7sdp">
+
+                                <CheckBox
+                                    android:id="@+id/priceCB2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:buttonTint="@color/colorAccent" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:gravity="center_vertical"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="₹201 - ₹400"
+                                    android:textAlignment="gravity"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_7sdp">
+
+                                <CheckBox
+                                    android:id="@+id/priceCB3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:buttonTint="@color/colorAccent" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:gravity="center_vertical"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="₹401 - ₹600"
+                                    android:textAlignment="gravity"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_6sdp">
+
+                                <CheckBox
+                                    android:id="@+id/priceCB4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:buttonTint="@color/colorAccent" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:gravity="center_vertical"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="₹601 - ₹800"
+                                    android:textAlignment="gravity"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_6sdp">
+
+                                <CheckBox
+                                    android:id="@+id/priceCB5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:buttonTint="@color/colorAccent" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:gravity="center_vertical"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="₹1000 above"
+                                    android:textAlignment="gravity"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/_6sdp">
+
+                                <CheckBox
+                                    android:id="@+id/priceCB6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:buttonTint="@color/colorAccent" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/_1sdp"
+                                    android:gravity="center_vertical"
+                                    android:padding="@dimen/_2sdp"
+                                    android:text="₹1201 - ₹1400"
+                                    android:textAlignment="gravity"
+                                    android:textColor="@color/black"
+                                    android:textSize="@dimen/_12sdp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/scrollable1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:id="@+id/radioGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp">
+
+                            <RadioButton
+                                android:id="@+id/rvone"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/onee"
+                                android:textSize="15dp" />
+
+
+                            <RadioButton
+                                android:id="@+id/rbone"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/one"
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rvtwo"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/two"
+
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rbthree"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/three"
+
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rvfour"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/four"
+
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rvfive"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/five"
+
+                                android:textSize="15dp" />
+
+
+                            <RadioButton
+                                android:id="@+id/rvsix"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/six"
+
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rvseven"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/seven"
+
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rveight"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/eight"
+
+                                android:textSize="15dp" />
+
+                            <RadioButton
+                                android:id="@+id/rvnine"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:buttonTint="@color/colorAccent"
+                                android:checked="false"
+                                android:text="@string/nine"
+                                android:textSize="15dp" />
+
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvreset"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="match_parent"
+            android:background="#AAA9A9"
+            android:elevation="@dimen/_4sdp"
+            android:gravity="center"
+            android:text="@string/reset"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFilter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/tvreset"
+            android:background="@drawable/rectangle_gradient_pink"
+            android:gravity="center"
+            android:text="@string/aplyfilter"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>

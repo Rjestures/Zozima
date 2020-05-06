@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="code.orderTrackingActivity.SelectReasonAcitivity">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp">
+
+            <ImageView
+                android:id="@+id/ivback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                app:srcCompat="@drawable/back" />
+
+            <code.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_45sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/resturn"
+                android:textColor="#050505"
+                android:textSize="@dimen/_17sdp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/grey"/>
+
+    </androidx.cardview.widget.CardView>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Productdetails"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black"
+
+                android:layout_marginTop="@dimen/_10sdp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_height="@dimen/_100sdp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp">
+                    <ImageView
+                        android:id="@+id/ivproductImage"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_100sdp"
+                        />
+                    <TextView
+                        android:id="@+id/tvproductname"
+                        android:layout_width="match_parent"
+                        android:lines="1"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_13sdp"
+                        android:textColor="@color/black"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/ivproductImage"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_10sdp"/>
+
+                    <TextView
+                        android:id="@+id/tvsize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/ivproductImage"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_below="@id/tvproductname"
+                        android:text="@string/size"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_10sdp"/>
+                    <TextView
+                        android:id="@+id/tvdetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_below="@id/tvproductname"
+                        android:text="size"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_10sdp"/>
+                    <TextView
+                        android:id="@+id/tvqty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_toRightOf="@id/ivproductImage"
+                        android:layout_below="@id/tvsize"
+                        android:text="@string/Quantity"
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="@dimen/_10sdp"/>
+                    <TextView
+                        android:id="@+id/tvqtyy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:layout_below="@id/tvqty"
+                        android:layout_marginTop="@dimen/_minus15sdp"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp"
+                        />
+
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_height="@dimen/_30sdp">
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#FB0073"
+                    android:id="@+id/spreason"/>
+
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_height="@dimen/_85sdp">
+                <EditText
+                    android:id="@+id/edt_remark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/moreus"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:background="@color/white"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_75sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:background="@color/colorAccent"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/canceleproduct"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_200sdp"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:elevation="@dimen/_4sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold"
+                android:background="@color/grey"
+                android:text="@string/ReturnProduct"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "975904674447",
+    "firebase_url": "https://zozima-2-bab90.firebaseio.com",
+    "project_id": "zozima-2-bab90",
+    "storage_bucket": "zozima-2-bab90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975904674447:android:bba2a53ec02750a4d316fa",
+        "android_client_info": {
+          "package_name": "com.zozima.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975904674447-kifej3uvq51guvkgdaf182ajdaj24ks9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zozima.android",
+            "certificate_hash": "0a10f4c8f345afec3eac8839fe485e9d464df2c3"
+          }
+        },
+        {
+          "client_id": "975904674447-58ud6d4bnmojbtrc3uqfrmdld2nhv8eu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBK25yLPLchU-qAb80obvMS2CcheLXeQFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975904674447-58ud6d4bnmojbtrc3uqfrmdld2nhv8eu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
