@@ -781,8 +781,8 @@ public class SubCategoryCatlogActivity extends BaseActivity implements View.OnCl
 //            mProgressDialog.dismiss();
             File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString(a++) + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
-            Log.v("wjhjbcb", String.valueOf(arrImagList.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(arrImagList.size()));
             imageFileToShare.length();
             Log.v("mdf", "image= " + imageFileToShare);
 

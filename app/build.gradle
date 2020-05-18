@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-
+// both jks key password is 123456
+//    alias key is zozima@2020
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.zozima.android"
         minSdkVersion 14
         targetSdkVersion 28
-        versionCode 8
-        versionName "0.1.8"
+        versionCode 9
+        versionName "0.1.9"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true

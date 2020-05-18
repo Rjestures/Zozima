@@ -121,6 +121,23 @@ public class AppUtils {
         return endingPosition;
     }
 
+    public static String addDates(int n,String oldDate){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM, hh:mm aaa");
+        Calendar c = Calendar.getInstance();
+        try{
+            c.setTime(sdf.parse(oldDate));
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+        //Incrementing the date by 1 day
+        c.add(Calendar.DAY_OF_MONTH, n);
+        String newDate = sdf.format(c.getTime());
+        System.out.println("Date Incremented by One: "+newDate);
+        return newDate;
+    }
+
+
+
     public static void showToastSort(Context context, String text) {
         if (mToast != null && mToast.getView().isShown()) {
             mToast.cancel();

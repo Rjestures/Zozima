@@ -23,7 +23,7 @@
     <string name="errorCode">Please type Correct Verification Code</string>
     <string name="countryCode">+91</string>
     <string name="resend">I didn\'t get a code. Resend</string>
-    <string name="newVersion">We have updated our application. \nKindly update</string>
+    <string name="newVersion">Update to the latest Version</string>
     <string name="update">Update</string>
     <string name="home">Home</string>
     <string name="plus"> + </string>

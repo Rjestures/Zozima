@@ -111,7 +111,7 @@ public final class AppSettings extends OSettings {
     public static final String id = "id";
     public static final String stateid = "stateID";
     public static final String couponChoosen = "couponChoosen";
-    public static final String searchArray = "searchArray";
+    public static final String searchArray = "searchArrays";
 
     public AppSettings(Activity mActivity) {
         super(mActivity);

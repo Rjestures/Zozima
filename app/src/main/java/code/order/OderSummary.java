@@ -240,11 +240,10 @@ public class OderSummary extends BaseActivity implements View.OnClickListener {
             //LinearLayout
             case R.id.lproceed:
                 
-                if(AppSettings.getString( AppSettings.sender_id ).equals( "" ))
+                if(tvodername.getText().toString().trim().equals( "" ))
                 {
                     Toast.makeText( mActivity, getString(R.string.addsenderinformation), Toast.LENGTH_SHORT ).show();
-                }
-                if (AppSettings.getString(AppSettings.profilename).equalsIgnoreCase("")) {
+                }else if (AppSettings.getString(AppSettings.profilename).equalsIgnoreCase("")) {
                     Toast.makeText(mActivity, getString(R.string.pleaseupdateprofile), Toast.LENGTH_SHORT).show();
                 } else {
 

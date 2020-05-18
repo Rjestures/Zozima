@@ -837,7 +837,7 @@ public class ProductAddToCardActivity extends BaseActivity {
 //            mProgressDialog.dismiss();
             File imageFileToShare = new File( Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString( a++ ) + ".jpeg" );
             imageUriArray.add( Uri.fromFile( new File( String.valueOf( imageFileToShare ) ) ) );
-            Log.v( "wjhjbcb", String.valueOf( imageUriArray.size() ) );
+            Log.v( "MYImagesSize", String.valueOf( imageUriArray.size() ) );
 
             imageFileToShare.length();
             Log.v( "mdf", "image= " + imageFileToShare );
@@ -964,7 +964,7 @@ public class ProductAddToCardActivity extends BaseActivity {
 //            mProgressDialog.dismiss();
             File imageFileToShare = new File( Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString( a++ ) + ".jpeg" );
             imageUriArray.add( Uri.fromFile( new File( String.valueOf( imageFileToShare ) ) ) );
-            Log.v( "wjhjbcb", String.valueOf( imageUriArray.size() ) );
+            Log.v( "MYImagesSize", String.valueOf( imageUriArray.size() ) );
 
             imageFileToShare.length();
             Log.v( "mdf", "image= " + imageFileToShare );

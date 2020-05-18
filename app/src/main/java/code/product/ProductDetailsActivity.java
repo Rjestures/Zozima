@@ -1056,7 +1056,7 @@ public class ProductDetailsActivity extends BaseActivity {
 //            mProgressDialog.dismiss();
             File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString(a++) + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
             Log.v("pdsizechecker", String.valueOf(imageUriArray.size()) + "  " + Integer.toString(productDataList.size()));
 
             imageFileToShare.length();
@@ -1066,14 +1066,14 @@ public class ProductDetailsActivity extends BaseActivity {
 
                 if (Build.VERSION.SDK_INT >= 24) {
                     try {
-                        Log.v("pdsizechecker", "Hello");
+                        Log.v("imageUriCheck", imageUriArray.toString());
                         Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
                         m.invoke(null);
                         Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_SEND);
+                        intent.setAction(Intent.ACTION_SEND_MULTIPLE);
                         intent.setType("text/plain");
                         intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUriArray);
-                        intent.setType("image/jpeg");
+                        intent.setType("image/*");
                         startActivity(Intent.createChooser(intent, "send"));
                         mProgressDialog2.dismiss();
                         Toast.makeText(mActivity, getString(R.string.catlogedescription), Toast.LENGTH_SHORT).show();
@@ -1202,8 +1202,8 @@ public class ProductDetailsActivity extends BaseActivity {
         protected void onPostExecute(String file_url) {
             File imageFileToShare = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/Zozima", "product" + Integer.toString(down++) + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
-            Log.v("wjhjbcb", String.valueOf(productDataList.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(productDataList.size()));
             imageFileToShare.length();
             Log.v("mdf", "image= " + imageFileToShare);
             if (productDataList.size() == imageUriArray.size()) {
@@ -1303,8 +1303,8 @@ public class ProductDetailsActivity extends BaseActivity {
 
             File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString(a++) + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
-            Log.v("wjhjbcb", String.valueOf(productDataList.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(productDataList.size()));
             imageFileToShare.length();
             Log.v("mdf", "image= " + imageFileToShare);
 

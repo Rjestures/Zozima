@@ -11,7 +11,7 @@
         android:layout_marginRight="@dimen/_10sdp"
         android:background="@color/white"
         android:elevation="@dimen/_4sdp"
-        android:padding="@dimen/_10sdp">
+        android:paddingHorizontal="@dimen/_10sdp">
 
         <RelativeLayout
             android:id="@+id/rlordered"
@@ -75,7 +75,7 @@
                 android:id="@+id/tvReasn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvOrdercancelled"
+                android:layout_below="@+id/tvDate"
                 android:layout_marginLeft="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_7sdp"
                 android:text="@string/reson"
@@ -88,7 +88,7 @@
                 android:id="@+id/tvReason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvOrdercancelled"
+                android:layout_below="@+id/tvDate"
                 android:layout_marginLeft="@dimen/_3sdp"
                 android:layout_marginTop="@dimen/_7sdp"
                 android:layout_toRightOf="@+id/tvReasn"

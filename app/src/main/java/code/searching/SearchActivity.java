@@ -66,6 +66,7 @@ public class SearchActivity extends BaseActivity {
     CatalogueAdapter adapterr;
     private ArrayList<HashMap<String, String>> catalogueList = new ArrayList<>();
     private ArrayList<HashMap<String, String>> searchList = new ArrayList<>();
+    private ArrayList<HashMap<String, String>> searchListRev = new ArrayList<>();
     //RecyclerView
     private RecyclerView recyclerView;
 
@@ -143,7 +144,25 @@ public class SearchActivity extends BaseActivity {
             public boolean onQueryTextSubmit(String query) {
 
                 if (query.length() >= 2) {
-
+                    HashMap<String, String> operators;
+                    operators = new HashMap<String, String>();
+                    operators.put("id", "");
+                    operators.put("catalog_id", "");
+                    operators.put("description", "");
+                    operators.put("status", "");
+                    operators.put("name", String.valueOf(editsearch.getQuery()));
+                    operators.put("time", AppUtils.getCurrentDates());
+                    for(int i=0;i<searchListRev.size();i++){
+                        if(String.valueOf(editsearch.getQuery()).equalsIgnoreCase(searchListRev.get(i).get("name"))){
+                            searchListRev.remove(i);
+                        }
+                    }searchListRev.add(operators);
+                    //**************************Saving ArrayList in SharedPref***************************
+                    Gson gson = new Gson();
+                    String json = gson.toJson(searchListRev);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString(AppSettings.searchArray, json);
+                    editor.commit();
                     Intent intent = new Intent(mActivity, SearchListActivity.class);
                     intent.putExtra("name", AppSettings.putString(AppSettings.productname, String.valueOf(editsearch.getQuery())));
                     startActivity(intent);
@@ -167,6 +186,7 @@ public class SearchActivity extends BaseActivity {
         });
         setData();
     }
+
     public int getDays(String startDate) {
         try {
             long MILLIS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -177,7 +197,7 @@ public class SearchActivity extends BaseActivity {
             long diff = (end - begin) / (MILLIS_PER_DAY);
 
             Log.d("Days_Ago", "my " + diff);
-            return  Math.abs((int)diff);
+            return Math.abs((int) diff);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -197,25 +217,32 @@ public class SearchActivity extends BaseActivity {
                 JSONArray jsonArray = new JSONArray(json);
                 for (int i = 0; i <= jsonArray.length() - 1; i++) {
                     JSONObject data_object = jsonArray.getJSONObject(i);
-                    HashMap<String, String> entries = new HashMap<String, String>();
-                    entries.put("id", data_object.getString("id"));
-                    entries.put("catalog_id", data_object.getString("catalog_id"));
-                    entries.put("description", data_object.getString("description"));
-                    entries.put("status", data_object.getString("status"));
-                    entries.put("name", data_object.getString("name"));
-                    if(data_object.has("time")){
-                        if(getDays(data_object.getString("time"))<=30){
+                    if (data_object.has("time")) {
+
+                        HashMap<String, String> entries = new HashMap<String, String>();
+                        if (getDays(data_object.getString("time")) <= 30) {
+
+                            entries.put("id", data_object.getString("id"));
+                            entries.put("catalog_id", data_object.getString("catalog_id"));
+                            entries.put("description", data_object.getString("description"));
+                            entries.put("status", data_object.getString("status"));
+                            entries.put("name", data_object.getString("name"));
+                            entries.put("time", data_object.getString("time"));
                             searchList.add(entries);
+                            searchListRev.add(entries);
+
                         }
                     }
 
 
                 }
 
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             Collections.reverse(searchList);
+
             RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mActivity, 1);
             adapterr = new CatalogueAdapter(mActivity, searchList);
             recyclerView.setLayoutManager(layoutManager);
@@ -376,11 +403,14 @@ public class SearchActivity extends BaseActivity {
                     operators.put("status", data.get(position).get("status"));
                     operators.put("name", data.get(position).get("name"));
                     operators.put("time", AppUtils.getCurrentDates());
-                    searchList.add(operators);
-
+                    for(int i=0;i<searchListRev.size();i++){
+                        if(data.get(position).get("name").equalsIgnoreCase(searchListRev.get(i).get("name"))){
+                            searchListRev.remove(i);
+                        }
+                    }searchListRev.add(operators);
                     //**************************Saving ArrayList in SharedPref***************************
                     Gson gson = new Gson();
-                    String json = gson.toJson(searchList);
+                    String json = gson.toJson(searchListRev);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString(AppSettings.searchArray, json);
                     editor.commit();

@@ -7,7 +7,6 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.media.MediaScannerConnection;
@@ -18,24 +17,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
-
-import androidx.annotation.NonNull;
-
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.viewpager.widget.ViewPager;
-import androidx.core.widget.NestedScrollView;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.text.Html;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.SpannableStringBuilder;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,15 +30,22 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.zozima.android.R;
@@ -90,9 +78,6 @@ import code.utils.AppConstants;
 import code.utils.AppUrls;
 import code.utils.AppUtils;
 import code.view.BaseFragment;
-import code.view.CustomTextView;
-
-import static code.utils.AppConstants.imageList;
 
 public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
@@ -101,11 +86,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     CustomLoader loader;
 
     //String Value
-    String offset = "0";
-    String catalog;
     String paging = "0";
-    Boolean canScroll=true;
-    Boolean canFilter=false;
+    String catalog;
+//    String paging = "0";
 
 
     //BottomSheetDialog
@@ -115,9 +98,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     String typeDiscount;
 
+    int radioIndex = -1;
 
     //ProgressDailod///
     ProgressDialog mProgressDialog;
+
+    Boolean canScroll = false;
+    Boolean canFilter = false;
 
 
     int pos = 0, other = 0, downlod = 0;
@@ -130,16 +117,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     //ImageView
     ImageView ivcart, ivloader;
-
+    CatalogueAdapter adapterr;
 
     //RelaytiveLayout
     RelativeLayout RlFilter, rllfilter;
 
     //ScrollView;
-    NestedScrollView llDicount,scrollable;
+    NestedScrollView llDicount, scrollable;
 
     //CheckBox
-    CheckBox priceCB1, priceCB2, priceCB3, priceCB4,priceCB5,priceCB6;
+    CheckBox priceCB1, priceCB2, priceCB3, priceCB4, priceCB5, priceCB6;
 
     //RadioButton
     RadioButton rbone, rbtwo, rbthree, rbfour, rbfive, rvsix, rvseven, rveight, rvnine, rvone;
@@ -152,9 +139,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     ArrayList<Uri> imageUriArray = new ArrayList<Uri>();
 
     ArrayList<String> arrPricelist = new ArrayList<String>();
+    JSONArray price = new JSONArray();
+    JSONArray category = new JSONArray();
+    JSONArray color = new JSONArray();
+    JSONObject maindata = new JSONObject();
+    JSONObject result = new JSONObject();
+    ProgressBar downProgress;
+    //NestedScrollView
+    NestedScrollView scrollView;
+    SwipeRefreshLayout simpleSwipeRefreshLayout;
     private ArrayList FilterArrayList = new ArrayList<>();
     private ArrayList arrColorList = new ArrayList<>();
-
     //Hasmap ArrayList
     private ArrayList<HashMap<String, String>> categoryList = new ArrayList<>();
     private ArrayList<HashMap<String, String>> categoryList1 = new ArrayList<>();
@@ -166,27 +161,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private ArrayList<HashMap<String, String>> checkBoxAray = new ArrayList<>();
     private ArrayList<HashMap<String, String>> Raaay = new ArrayList<>();
     private ArrayList<HashMap<String, String>> priceArray = new ArrayList<>();
-
-
-    JSONArray price = new JSONArray();
-    JSONArray category = new JSONArray();
-    JSONArray color = new JSONArray();
-    JSONObject maindata = new JSONObject();
-    JSONObject result = new JSONObject();
-
     //RecyclerView
-    private RecyclerView recyclerViewCat, recyclerView, rvCategory,rvColor;
-
+    private RecyclerView recyclerViewCat, recyclerView, rvCategory, rvColor;
     //ViewPager
     private ViewPager viewPager;
-
     //LinearLayout
-    private LinearLayout llCategoryy, llPrice, lllPrice, llCategory, llDiscount, llCollor,llColllor,llColor;
-
-    ProgressBar downProgress;
-    //NestedScrollView
-    NestedScrollView scrollView;
-    SwipeRefreshLayout simpleSwipeRefreshLayout;
+    private LinearLayout llCategoryy, llPrice, lllPrice, llCategory, llDiscount, llCollor, llColllor, llColor;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -196,8 +176,22 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
         findViewById(view);
         listner();
-
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mActivity, 1);
+        adapterr = new CatalogueAdapter(mActivity, catalogueList);
+        recyclerView.setLayoutManager(layoutManager);
         //getCategoryApi
+        if (SimpleHTTPConnection.isNetworkAvailable(mActivity)) {
+
+
+            categoryList.clear();
+            getCategoryApi();
+            catalogueList.clear();
+            getCatlogCollection();// first Time Calling
+
+        } else {
+
+            AppUtils.showToastSort(mActivity, getString(R.string.errorInternet));
+        }
 
 
         return view;
@@ -247,43 +241,28 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     if (scrollView.getChildAt(0).getBottom() <= (scrollView.getHeight() + scrollView.getScrollY())) {
                         //scroll view is at bottom
 
-
-                        /*catalogueList.clear();*/
-                        if(canFilter){
-                            simpleProgressBar.setVisibility(View.GONE);
-//                            progresbar.setVisibility(View.VISIBLE);
-                            getCategoryApiFilter();
-                            canScroll=false;
-                        }else if(canScroll){
-                            simpleProgressBar.setVisibility(View.GONE);
-                            downProgress.setVisibility(View.VISIBLE);
-                            getCatlogCollection();// Pagination Api
-                            canFilter=false;
+                        simpleProgressBar.setVisibility(View.GONE);
+                        downProgress.setVisibility(View.VISIBLE);
+                        if (canScroll) {
+                            if (canFilter)
+                                hitFilterApi();
+                            else
+                                getCatlogCollection();
                         }
+                           /* if(canFilter)
+                                hitFilterApi();
+                            else if(canScroll)
+                            getCatlogCollection();// Pagination Api*/
 
-                    } else
-                        {
-                            downProgress.setVisibility(View.GONE);
+
+                    } else {
+                        downProgress.setVisibility(View.GONE);
                     }
                 }
             }
         });
-        if (SimpleHTTPConnection.isNetworkAvailable(mActivity)) {
-
-
-            categoryList.clear();
-            getCategoryApi();
-            catalogueList.clear();
-            getCatlogCollection();// first Time Calling
-
-        } else {
-
-            AppUtils.showToastSort(mActivity, getString(R.string.errorInternet));
-        }
 
         hitgetBanners();
-
-
 
 
     }
@@ -400,31 +379,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 });
 
     }
-    class RemindTask extends TimerTask {
-        private int numberOfPages;
-        private ViewPager mViewPager;
-        private int page = 0;
 
-        public RemindTask(int numberOfPages, ViewPager mViewPager) {
-            this.numberOfPages = numberOfPages;
-            this.mViewPager = mViewPager;
-        }
-
-        @Override
-        public void run() {
-            mActivity.runOnUiThread(new Runnable() {
-                public void run() {
-                    if (page > numberOfPages) { // In my case the number of pages are 5
-                        mViewPager.setCurrentItem(0);
-                        page = 0;
-                    } else {
-                        mViewPager.setCurrentItem(page++);
-                    }
-                }
-            });
-
-        }
-    }
     //getCategoryApi
     private void getCategoryApi() {
 
@@ -508,7 +463,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     //getCatlogCollection
     private void getCatlogCollection() {
-        canScroll=false;
+        canScroll = false;
         simpleProgressBar.setVisibility(View.VISIBLE);
         downProgress.setVisibility(View.VISIBLE);
         AppUtils.hideSoftKeyboard(mActivity);
@@ -550,7 +505,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                             JSONObject jsonObject = response.getJSONObject(AppConstants.projectName);
 
                             if (jsonObject.getString("resCode").equals("1")) {
-                                canScroll=true;
+                                canScroll = true;
                                 simpleProgressBar.setVisibility(View.GONE);
 //                                ivloader.setVisibility(View.GONE);
                                 paging = jsonObject.getString("pageindex");
@@ -596,15 +551,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 
                                 }
-
-                                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mActivity, 1);
-                                CatalogueAdapter adapterr = new CatalogueAdapter(mActivity, catalogueList);
-                                recyclerView.setLayoutManager(layoutManager);
+                                adapterr = new CatalogueAdapter(mActivity, catalogueList);
                                 recyclerView.setAdapter(adapterr);
-                            }
-
-                            else {
-                                canScroll=false;
+                                adapterr.notifyDataSetChanged();
+                            } else {
+                                canScroll = false;
                                 tvnofilter.setVisibility(View.GONE);
                                 simpleProgressBar.setVisibility(View.GONE);
                                 downProgress.setVisibility(View.GONE);
@@ -614,6 +565,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            canScroll = false;
                             downProgress.setVisibility(View.GONE);
                         }
 
@@ -631,7 +583,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                 });
     }
-
 
     //Sharenow method
     public void Sharenow(int pos) {
@@ -678,7 +629,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
 
     }
-
 
     //AddFavApi
     private void addFavApi(String CatalogId, final ImageView ivFavourite) {
@@ -761,53 +711,53 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     //Filter
     public void filter() {
 
-         price = new JSONArray();
-         category = new JSONArray();
-         color = new JSONArray();
-         maindata = new JSONObject();
-         result = new JSONObject();
+        price = new JSONArray();
+        category = new JSONArray();
+        color = new JSONArray();
+        maindata = new JSONObject();
+        result = new JSONObject();
 
         bottomSheetDialog = new BottomSheetDialog(mActivity);
         bottomSheetDialog.setContentView(R.layout.filter_layout);
-        rllfilter = (RelativeLayout) bottomSheetDialog.findViewById(R.id.rllfilter);
-        rvCategory = (RecyclerView) bottomSheetDialog.findViewById(R.id.rvCategory);
-        rvColor = (RecyclerView) bottomSheetDialog.findViewById(R.id.rvColor);
-        llCategoryy = (LinearLayout) bottomSheetDialog.findViewById(R.id.llCategoryy);
-        llColor = (LinearLayout) bottomSheetDialog.findViewById(R.id.llColor);
-        llPrice = (LinearLayout) bottomSheetDialog.findViewById(R.id.llPrice);
-        lllPrice = (LinearLayout) bottomSheetDialog.findViewById(R.id.lllPrice);
-        llCategory = (LinearLayout) bottomSheetDialog.findViewById(R.id.llCategory);
-        llDiscount = (LinearLayout) bottomSheetDialog.findViewById(R.id.llDiscount);
-        llCollor = (LinearLayout) bottomSheetDialog.findViewById(R.id.llCollor);
+        rllfilter = bottomSheetDialog.findViewById(R.id.rllfilter);
+        rvCategory = bottomSheetDialog.findViewById(R.id.rvCategory);
+        rvColor = bottomSheetDialog.findViewById(R.id.rvColor);
+        llCategoryy = bottomSheetDialog.findViewById(R.id.llCategoryy);
+        llColor = bottomSheetDialog.findViewById(R.id.llColor);
+        llPrice = bottomSheetDialog.findViewById(R.id.llPrice);
+        lllPrice = bottomSheetDialog.findViewById(R.id.lllPrice);
+        llCategory = bottomSheetDialog.findViewById(R.id.llCategory);
+        llDiscount = bottomSheetDialog.findViewById(R.id.llDiscount);
+        llCollor = bottomSheetDialog.findViewById(R.id.llCollor);
 
-        scrollable = (NestedScrollView) bottomSheetDialog.findViewById(R.id.scrollable);
-        llDicount = (NestedScrollView) bottomSheetDialog.findViewById(R.id.scrollable1);
+        scrollable = bottomSheetDialog.findViewById(R.id.scrollable);
+        llDicount = bottomSheetDialog.findViewById(R.id.scrollable1);
 
         // PriceCeckBox
-        priceCB1 = (CheckBox) bottomSheetDialog.findViewById(R.id.priceCB1);
-        priceCB2 = (CheckBox) bottomSheetDialog.findViewById(R.id.priceCB2);
-        priceCB3 = (CheckBox) bottomSheetDialog.findViewById(R.id.priceCB3);
-        priceCB4 = (CheckBox) bottomSheetDialog.findViewById(R.id.priceCB4);
-        priceCB5 = (CheckBox) bottomSheetDialog.findViewById(R.id.priceCB5);
-        priceCB6 = (CheckBox) bottomSheetDialog.findViewById(R.id.priceCB6);
-        radioGroup = (RadioGroup) bottomSheetDialog.findViewById(R.id.radioGroup);
+        priceCB1 = bottomSheetDialog.findViewById(R.id.priceCB1);
+        priceCB2 = bottomSheetDialog.findViewById(R.id.priceCB2);
+        priceCB3 = bottomSheetDialog.findViewById(R.id.priceCB3);
+        priceCB4 = bottomSheetDialog.findViewById(R.id.priceCB4);
+        priceCB5 = bottomSheetDialog.findViewById(R.id.priceCB5);
+        priceCB6 = bottomSheetDialog.findViewById(R.id.priceCB6);
+        radioGroup = bottomSheetDialog.findViewById(R.id.radioGroup);
 
         //RedioButton
-        rbone = (RadioButton) bottomSheetDialog.findViewById(R.id.rbone);
-        rbtwo = (RadioButton) bottomSheetDialog.findViewById(R.id.rvtwo);
-        rbthree = (RadioButton) bottomSheetDialog.findViewById(R.id.rbthree);
-        rbfour = (RadioButton) bottomSheetDialog.findViewById(R.id.rvfour);
-        rbfive = (RadioButton) bottomSheetDialog.findViewById(R.id.rvfive);
-        rvsix = (RadioButton) bottomSheetDialog.findViewById(R.id.rvsix);
-        rvseven = (RadioButton) bottomSheetDialog.findViewById(R.id.rvseven);
-        rveight = (RadioButton) bottomSheetDialog.findViewById(R.id.rveight);
-        rvnine = (RadioButton) bottomSheetDialog.findViewById(R.id.rvnine);
-        rvone = (RadioButton) bottomSheetDialog.findViewById(R.id.rvone);
+        rbone = bottomSheetDialog.findViewById(R.id.rbone);
+        rbtwo = bottomSheetDialog.findViewById(R.id.rvtwo);
+        rbthree = bottomSheetDialog.findViewById(R.id.rbthree);
+        rbfour = bottomSheetDialog.findViewById(R.id.rvfour);
+        rbfive = bottomSheetDialog.findViewById(R.id.rvfive);
+        rvsix = bottomSheetDialog.findViewById(R.id.rvsix);
+        rvseven = bottomSheetDialog.findViewById(R.id.rvseven);
+        rveight = bottomSheetDialog.findViewById(R.id.rveight);
+        rvnine = bottomSheetDialog.findViewById(R.id.rvnine);
+        rvone = bottomSheetDialog.findViewById(R.id.rvone);
 
 
         //TextView
-        tvFilter = (TextView) bottomSheetDialog.findViewById(R.id.tvFilter);
-        tvreset = (TextView) bottomSheetDialog.findViewById(R.id.tvreset);
+        tvFilter = bottomSheetDialog.findViewById(R.id.tvFilter);
+        tvreset = bottomSheetDialog.findViewById(R.id.tvreset);
 
         Log.v("dkmxdkjf", String.valueOf(categoryList1));
 
@@ -930,7 +880,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         });
 
 
-
         //FilterBitton Apply
         tvFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -940,13 +889,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     int selectedIdBoundaryWall = radioGroup.getCheckedRadioButtonId();
                     View radioButtonBoundaryWall = bottomSheetDialog.findViewById(selectedIdBoundaryWall);
                     int idx = radioGroup.indexOfChild(radioButtonBoundaryWall);
+                    radioIndex = idx;
                     Log.d("dsnfsd", Integer.toString(idx));
                     categoryList1.clear();
                     checkBoxAray.clear();
                     arrGetcolorList.clear();
                     Raaay.clear();
                     priceArray.clear();
-                    hitFilterApi(idx);
+
+                    hitFilterApi();
+
                     bottomSheetDialog.dismiss();
                 } else {
                     AppUtils.showToastSort(getActivity(), getString(R.string.errorInternet));
@@ -978,11 +930,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         if (SimpleHTTPConnection.isNetworkAvailable()) {
             arrGetcolorList.clear();
             getColorApi();
-        }
-
-        else
-
-        {
+        } else {
 
             AppUtils.showToastSort(mActivity, getString(R.string.errorInternet));
         }
@@ -990,11 +938,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             categoryList1.clear();
             llCategory.setVisibility(View.VISIBLE);
             scrollable.setVisibility(View.VISIBLE);
-            offset="0";
-            getCategoryApiFilter();
-        } else
 
-            {
+            getCategoryApiFilter();
+        } else {
 
             AppUtils.showToastSort(mActivity, getString(R.string.errorInternet));
         }
@@ -1081,11 +1027,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 arrColorList.clear();
                 getColorApi();
                 catalogueList.clear();
-                paging="0";
-                canScroll=true;
+                paging = "0";
+
                 getCatlogCollection();//Reset Filter Api
                 categoryList1.clear();
-
 
 
             }
@@ -1141,6 +1086,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     //parseGetCategoryJSON
     private void parseGetCategoryJSONN(JSONObject response) {
         categoryList1.clear();
+
         AppUtils.hideDialog();
 
         Log.d("getCategoryApiFilter", response.toString());
@@ -1179,93 +1125,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 
     }
-    //CategoryFilterAdapter
-    private class ColorAdapTer extends RecyclerView.Adapter<holderColor> {
-        ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
-        ArrayList<HashMap<String, String>> dataCheck = new ArrayList<HashMap<String, String>>();
-
-        public ColorAdapTer(Activity mActivity, ArrayList<HashMap<String, String>> arrGetcolorList) {
-            data = arrGetcolorList;
-        }
-
-        public holderColor onCreateViewHolder(ViewGroup parent, int viewType) {
-            return new holderColor(LayoutInflater.from(parent.getContext()).inflate(R.layout.colorlayout, parent, false));
-        }
-
-
-        @SuppressLint("SetTextI18n")
-        public void onBindViewHolder(final holderColor holderColor, final int position) {
-
-
-
-            if (arrColorList.contains(data.get(position).get("colorId")))
-
-                holderColor.checkBox.setChecked(true);
-
-            else
-
-                {
-
-                holderColor.checkBox.setChecked(false);
-
-            }
-
-
-            holderColor.checkBox.setText(data.get(position).get("name"));
-            Picasso.get().load(data.get(position).get("image")).resize(400,600).into(holderColor.ivcircle);
-
-            holderColor.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if (isChecked) {
-                        Log.v("CheckBoxTester", buttonView.getText().toString());
-
-                        arrColorList.add(data.get(position).get("colorId"));
-
-
-                    }
-
-                    else {
-
-                        arrColorList.remove(data.get(position).get("colorId"));
-
-
-                    }
-                    Log.v("CheckBoxTester", arrColorList.toString());
-                }
-            });
-        }
-
-
-        public int getItemCount() {
-            return data.size();
-        }
-    }
-
-    public class holderColor extends RecyclerView.ViewHolder {
-
-
-        //TextView
-        TextView tvfilter;
-        // CheckBox
-        CheckBox checkBox;
-        ImageView ivcircle;
-
-
-        public holderColor(View itemView) {
-            super(itemView);
-
-            //TextView
-            tvfilter = itemView.findViewById(R.id.tvfilter);
-            checkBox = itemView.findViewById(R.id.checkBox);
-            ivcircle = itemView.findViewById(R.id.ivcircle);
-
-
-
-        }
-    }
-
-
 
     //getColorApi
     private void getColorApi() {
@@ -1335,7 +1194,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 adapterr.notifyDataSetChanged();
 
 
-
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -1345,11 +1203,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     //FilterApi
-    private void hitFilterApi(int idx) {
-
+    private void hitFilterApi() {
+        canFilter = true;
+        canScroll = false;
         AppUtils.showRequestDialog(mActivity);
         Log.v("GetfiltListApi", AppUrls.FilterData);
-            canScroll=false;
 
 
         try {
@@ -1375,11 +1233,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
             }
 
-            if (idx == -1) {
+            if (radioIndex == -1) {
                 maindata.put("discount", "");
 
             } else {
-                maindata.put("discount", idx);
+                maindata.put("discount", radioIndex);
 
             }
 
@@ -1388,7 +1246,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             maindata.put("category", category);
             maindata.put("colors", color);
             maindata.put("price", price);
-            maindata.put("pageindex", offset);
+            maindata.put("pageindex", paging);
             result.put(AppConstants.projectName, maindata);
             Log.v("currentData", maindata.toString());
 
@@ -1412,12 +1270,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                         try {
                             JSONObject jsonObject = response.getJSONObject(AppConstants.projectName);
                             if (jsonObject.getString("resCode").equals("1")) {
-                                canFilter=true;
-                                recyclerView.setVisibility(View.VISIBLE);
+                                canScroll = true;
+
+
                                 tvnofilter.setVisibility(View.GONE);
-                                catalogueList.clear();
-                                checkBoxAray.clear();
-                                Raaay.clear();
 
 
                                 JSONArray jsonArray = jsonObject.getJSONArray("catalogs");
@@ -1455,6 +1311,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                                     }
                                 }
+                                if (jsonObject.has("pageindex")) {
+                                    paging = jsonObject.getString("pageindex");
+                                }
+
                                 JSONObject jsonObject1 = jsonObject.getJSONObject("FilterData");
 
 
@@ -1493,15 +1353,14 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                                     priceArray.add(hashlis3);
                                 }
 
-                                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(mActivity, 1);
-                                CatalogueAdapter adapterr = new CatalogueAdapter(mActivity, catalogueList);
-                                recyclerView.setLayoutManager(layoutManager);
+
+                                adapterr = new CatalogueAdapter(mActivity, catalogueList);
                                 recyclerView.setAdapter(adapterr);
                                 adapterr.notifyDataSetChanged();
                                 AppUtils.hideDialog();
-                            }
-                            else {
-                                recyclerView.setVisibility(View.GONE);
+                            } else {
+                                canScroll = false;
+
                                 JSONObject jsonObject4 = jsonObject.getJSONObject("FilterData");
 
                                 AppSettings.putString(AppSettings.discount, jsonObject4.getString("discount"));
@@ -1517,7 +1376,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                                     checkBoxAray.add(hashlis4);
 
                                 }
-
 
 
                                 Log.v("Mychecks", checkBoxAray.toString());
@@ -1546,9 +1404,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                                 Toast.makeText(mActivity, "No Data Found", Toast.LENGTH_LONG).show();
                                 tvnofilter.setVisibility(View.VISIBLE);
                                 simpleProgressBar.setVisibility(View.GONE);
-                                recyclerView.setVisibility(View.GONE);
+
                                 downProgress.setVisibility(View.GONE);
-                                canFilter=false;
+
                                 AppUtils.hideDialog();
                             }
 
@@ -1572,6 +1430,178 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     }
 
                 });
+    }
+
+    private void sharednowApi(String catalogId) {
+
+        AppUtils.hideSoftKeyboard(mActivity);
+        AppUtils.showRequestDialog(mActivity);
+        String url = AppUrls.ShareCalog;
+        Log.v("urlApi", url);
+        JSONObject jsonObject = new JSONObject();
+        JSONObject json = new JSONObject();
+
+        try {
+
+            json.put(AppConstants.projectName, jsonObject);
+            jsonObject.put("catalogId", catalogId);
+            jsonObject.put("userId", AppSettings.getString(AppSettings.userId));
+
+            Log.v("finddObject", String.valueOf(json));
+
+        } catch (JSONException e) {
+
+            e.printStackTrace();
+        }
+
+        AndroidNetworking.post(url)
+
+                .addJSONObjectBody(json)
+
+                .setPriority(Priority.HIGH)
+
+                .build()
+
+                .getAsJSONObject(new JSONObjectRequestListener() {
+
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        AppUtils.hideDialog();
+
+                        Log.v("getsharedCatalog", String.valueOf(response));
+                        try {
+
+                            JSONObject jsonObject = response.getJSONObject(AppConstants.projectName);
+
+
+                            if (jsonObject.getString("resCode").equals("1")) {
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+
+                        AppUtils.hideDialog();
+                        Log.v("ggfh", String.valueOf(anError));
+
+
+                    }
+
+                });
+    }
+
+    class RemindTask extends TimerTask {
+        private int numberOfPages;
+        private ViewPager mViewPager;
+        private int page = 0;
+
+        public RemindTask(int numberOfPages, ViewPager mViewPager) {
+            this.numberOfPages = numberOfPages;
+            this.mViewPager = mViewPager;
+        }
+
+        @Override
+        public void run() {
+            mActivity.runOnUiThread(new Runnable() {
+                public void run() {
+                    if (page > numberOfPages) { // In my case the number of pages are 5
+                        mViewPager.setCurrentItem(0);
+                        page = 0;
+                    } else {
+                        mViewPager.setCurrentItem(page++);
+                    }
+                }
+            });
+
+        }
+    }
+
+    //CategoryFilterAdapter
+    private class ColorAdapTer extends RecyclerView.Adapter<holderColor> {
+        ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
+        ArrayList<HashMap<String, String>> dataCheck = new ArrayList<HashMap<String, String>>();
+
+        public ColorAdapTer(Activity mActivity, ArrayList<HashMap<String, String>> arrGetcolorList) {
+            data = arrGetcolorList;
+        }
+
+        public holderColor onCreateViewHolder(ViewGroup parent, int viewType) {
+            return new holderColor(LayoutInflater.from(parent.getContext()).inflate(R.layout.colorlayout, parent, false));
+        }
+
+
+        @SuppressLint("SetTextI18n")
+        public void onBindViewHolder(final holderColor holderColor, final int position) {
+
+
+            if (arrColorList.contains(data.get(position).get("colorId")))
+
+                holderColor.checkBox.setChecked(true);
+
+            else {
+
+                holderColor.checkBox.setChecked(false);
+
+            }
+
+
+            holderColor.checkBox.setText(data.get(position).get("name"));
+            Picasso.get().load(data.get(position).get("image")).resize(400, 600).into(holderColor.ivcircle);
+
+            holderColor.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        Log.v("CheckBoxTester", buttonView.getText().toString());
+
+                        arrColorList.add(data.get(position).get("colorId"));
+
+
+                    } else {
+
+                        arrColorList.remove(data.get(position).get("colorId"));
+
+
+                    }
+                    Log.v("CheckBoxTester", arrColorList.toString());
+                }
+            });
+        }
+
+
+        public int getItemCount() {
+            return data.size();
+        }
+    }
+
+    public class holderColor extends RecyclerView.ViewHolder {
+
+
+        //TextView
+        TextView tvfilter;
+        // CheckBox
+        CheckBox checkBox;
+        ImageView ivcircle;
+
+
+        public holderColor(View itemView) {
+            super(itemView);
+
+            //TextView
+            tvfilter = itemView.findViewById(R.id.tvfilter);
+            checkBox = itemView.findViewById(R.id.checkBox);
+            ivcircle = itemView.findViewById(R.id.ivcircle);
+
+
+        }
     }
 
     //ShareNowWhatspDownloader
@@ -1613,7 +1643,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
                 OutputStream outputStream = new FileOutputStream(file);
 
-                byte data[] = new byte[1024];
+                byte[] data = new byte[1024];
                 long total = 0;
                 while ((count = inputStream.read(data)) != -1) {
                     total += count;
@@ -1640,10 +1670,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 //            Toast.makeText( mActivity, "Sharing Images...", Toast.LENGTH_SHORT ).show();
 //            mProgressDialog.dismiss();
-            File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString(a++) + ".jpeg");
+            File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + a++ + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
-            Log.v("wjhjbcb", String.valueOf(arrImagList.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(arrImagList.size()));
             imageFileToShare.length();
             Log.v("mdf", "image= " + imageFileToShare);
 
@@ -1713,7 +1743,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
                 OutputStream outputStream = new FileOutputStream(file);
 
-                byte data[] = new byte[1024];
+                byte[] data = new byte[1024];
                 long total = 0;
                 while ((count = inputStream.read(data)) != -1) {
                     total += count;
@@ -1739,13 +1769,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         protected void onPostExecute(String file_url) {
 
 
-            File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + Integer.toString(n++) + ".jpeg");
+            File imageFileToShare = new File(Environment.getExternalStorageDirectory().toString() + "/Zozima", "name" + n++ + ".jpeg");
 
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
 
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
 
-            Log.v("wjhjbcb", String.valueOf(arrImagList.size()));
+            Log.v("MYImagesSize", String.valueOf(arrImagList.size()));
 
             imageFileToShare.length();
 
@@ -1756,7 +1786,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 if (Build.VERSION.SDK_INT >= 24) {
                     try {
                         Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
-
+                        Log.v("imageUriCheck", imageUriArray.toString());
                         m.invoke(null);
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_SEND_MULTIPLE);
@@ -1829,7 +1859,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                                 Log.i("ExternalStorage", "-> uri=" + uri);
                             }
                         });
-                byte data[] = new byte[1024];
+                byte[] data = new byte[1024];
                 long total = 0;
 
                 while ((count = inputStream.read(data)) != -1) {
@@ -1893,10 +1923,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         @Override
         protected void onPostExecute(String file_url) {
 
-            File imageFileToShare = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/Zozima", "home" + Integer.toString(dd++) + ".jpeg");
+            File imageFileToShare = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/Zozima", "home" + dd++ + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
-            Log.v("wjhjbcb", String.valueOf(arrImagList.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(arrImagList.size()));
             imageFileToShare.length();
             Log.v("mdf", "image= " + imageFileToShare);
             if (arrImagFaList.size() == imageUriArray.size()) {
@@ -1973,7 +2003,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 InputStream inputStream = new BufferedInputStream(url.openStream(), 8192);
                 OutputStream outputStream = new FileOutputStream(file);
 
-                byte data[] = new byte[1024];
+                byte[] data = new byte[1024];
                 long total = 0;
                 while ((count = inputStream.read(data)) != -1) {
                     total += count;
@@ -2000,10 +2030,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
 //            Toast.makeText( mActivity, "Sharing Images...", Toast.LENGTH_SHORT ).show();
 //            mProgressDialog.dismiss();
-            File imageFileToShare = new File(Environment.getExternalStorageState() + "/Zozima", "name" + Integer.toString(f++) + ".jpeg");
+            File imageFileToShare = new File(Environment.getExternalStorageState() + "/Zozima", "name" + f++ + ".jpeg");
             imageUriArray.add(Uri.fromFile(new File(String.valueOf(imageFileToShare))));
-            Log.v("wjhjbcb", String.valueOf(imageUriArray.size()));
-            Log.v("wjhjbcb", String.valueOf(arrImagList.size()));
+            Log.v("MYImagesSize", String.valueOf(imageUriArray.size()));
+            Log.v("MYImagesSize", String.valueOf(arrImagList.size()));
             imageFileToShare.length();
             Log.v("mdf", "image= " + imageFileToShare);
 
@@ -2130,7 +2160,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
             holderCatlog.tvName.setText(data.get(position).get("categoryName"));
             if (!data.get(position).get("categoryIcon").isEmpty()) {
-                Picasso.get().load(data.get(position).get("categoryIcon")).placeholder(R.mipmap.logo_grey).resize(400,600).into(holderCatlog.ivCategory);
+                Picasso.get().load(data.get(position).get("categoryIcon")).placeholder(R.mipmap.logo_grey).resize(400, 600).into(holderCatlog.ivCategory);
             }
 
             holderCatlog.cardView.setOnClickListener(new View.OnClickListener() {
@@ -2176,6 +2206,22 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
         }
     }
+/*
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        if (SimpleHTTPConnection.isNetworkAvailable(mActivity)) {
+
+            catalogueList.clear();
+            getCatlogCollection();
+
+        } else {
+
+            AppUtils.showToastSort(mActivity, getString(R.string.errorInternet));
+        }
+
+    }*/
 
     //CatalogueAdapter
     private class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.CatalogueHolder> {
@@ -2196,25 +2242,21 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         @SuppressLint("SetTextI18n")
         public void onBindViewHolder(final CatalogueAdapter.CatalogueHolder holder, final int position) {
             final String statusu = (data.get(position).get("status"));
-             String name = (data.get(position).get("name"));
+            String name = (data.get(position).get("name"));
 
 
-          ;
-             if(name.contains("Combo Pack"))
-             {
-                String  camboname =name.substring(0,10);
-                 String namevalue=name.substring(11);
-                 holder.tvName.setText(namevalue.trim());
-                 holder.tvCambo.setText(camboname);
-             }
-             else
-                 {
-                     holder.tvCambo.setVisibility(View.GONE);
-                     holder.tvName.setText(name.trim());
-             }
+            if (name.contains("Combo Pack")) {
+                String camboname = name.substring(0, 10);
+                String namevalue = name.substring(11);
+                holder.tvName.setText(namevalue.trim());
+                holder.tvCambo.setText(camboname);
+            } else {
+                holder.tvCambo.setVisibility(View.GONE);
+                holder.tvName.setText(name.trim());
+            }
 
 
-             Log.v("fkdf", data.get(position).get("status"));
+            Log.v("fkdf", data.get(position).get("status"));
 
             if (statusu.equals("1")) {
 
@@ -2230,11 +2272,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
             if (data.get(position).get("DiscounType").equals("1"))
 
-                holder.tvDiscount.setText("₹" + data.get(position).get("DiscountValue") + " "+getString(R.string.off));
+                holder.tvDiscount.setText("₹" + data.get(position).get("DiscountValue") + " " + getString(R.string.off));
 
 
             else if (data.get(position).get("DiscounType").equals("2"))
-                holder.tvDiscount.setText("₹" + data.get(position).get("DiscountValue") + " "+getString(R.string.percent));
+                holder.tvDiscount.setText("₹" + data.get(position).get("DiscountValue") + " " + getString(R.string.percent));
 
             else
                 holder.tvDiscount.setText("");
@@ -2260,10 +2302,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
             if (type.equals("1")) {
 
-                holder.shipincharge.setText(getString(R.string.shipping)+" " + getString(R.string.rupaye) + shipingCharge);
+                holder.shipincharge.setText(getString(R.string.shipping) + " " + getString(R.string.rupaye) + shipingCharge);
 
-            }
-            else {
+            } else {
 
                 holder.llShippingCharge.setVisibility(View.VISIBLE);
 
@@ -2276,7 +2317,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             } else
                 holder.tvCount.setVisibility(View.VISIBLE);
 
-            holder.tvCount.setText("+" + Integer.toString(Integer.parseInt(data.get(position).get("productCount")) - 2));
+            holder.tvCount.setText("+" + (Integer.parseInt(data.get(position).get("productCount")) - 2));
 
 
             try {
@@ -2290,19 +2331,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
                     if (ii == 0) {
 
-                        Picasso.get().load(jsonObject.getString("productThumbnil")).placeholder(R.mipmap.logo_grey).resize(400,600).into(holder.ivImage);
+                        Picasso.get().load(jsonObject.getString("productThumbnil")).placeholder(R.mipmap.logo_grey).resize(400, 600).into(holder.ivImage);
 
                     }
                     if (ii == 1) {
 
-                        Picasso.get().load(jsonObject.getString("productThumbnil")).placeholder(R.mipmap.logo_grey).resize(400,600).into(holder.ivImage2);
+                        Picasso.get().load(jsonObject.getString("productThumbnil")).placeholder(R.mipmap.logo_grey).resize(400, 600).into(holder.ivImage2);
 
 
                     }
 
                     if (ii == 2) {
                         Picasso.get().load(jsonObject.getString("productThumbnil"))
-                                .placeholder(R.mipmap.logo_grey).resize(400,600).into(holder.ivImage3);
+                                .placeholder(R.mipmap.logo_grey).resize(400, 600).into(holder.ivImage3);
                     }
 
                 }
@@ -2492,7 +2533,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
 
         public class CatalogueHolder extends RecyclerView.ViewHolder {
-            TextView tvName, tvCount, tvPrice, tvOriginalPrice, tvDiscount,tvCambo;
+            TextView tvName, tvCount, tvPrice, tvOriginalPrice, tvDiscount, tvCambo;
             //CardView
             CardView cardView;
             //ImageView
@@ -2555,89 +2596,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
 
 
-    }
-/*
-    @Override
-    public void onResume() {
-
-        super.onResume();
-        if (SimpleHTTPConnection.isNetworkAvailable(mActivity)) {
-
-            catalogueList.clear();
-            getCatlogCollection();
-
-        } else {
-
-            AppUtils.showToastSort(mActivity, getString(R.string.errorInternet));
-        }
-
-    }*/
-
-
-    private void sharednowApi(String catalogId) {
-
-        AppUtils.hideSoftKeyboard(mActivity);
-        AppUtils.showRequestDialog(mActivity);
-        String url = AppUrls.ShareCalog;
-        Log.v("urlApi", url);
-        JSONObject jsonObject = new JSONObject();
-        JSONObject json = new JSONObject();
-
-        try {
-
-            json.put(AppConstants.projectName, jsonObject);
-            jsonObject.put("catalogId", catalogId);
-            jsonObject.put("userId", AppSettings.getString(AppSettings.userId));
-
-            Log.v("finddObject", String.valueOf(json));
-
-        } catch (JSONException e) {
-
-            e.printStackTrace();
-        }
-
-        AndroidNetworking.post(url)
-
-                .addJSONObjectBody(json)
-
-                .setPriority(Priority.HIGH)
-
-                .build()
-
-                .getAsJSONObject(new JSONObjectRequestListener() {
-
-                    @Override
-                    public void onResponse(JSONObject response) {
-
-                        AppUtils.hideDialog();
-
-                        Log.v("getsharedCatalog", String.valueOf(response));
-                        try {
-
-                            JSONObject jsonObject = response.getJSONObject(AppConstants.projectName);
-
-
-                            if (jsonObject.getString("resCode").equals("1")) {
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onError(ANError anError) {
-
-                        AppUtils.hideDialog();
-                        Log.v("ggfh", String.valueOf(anError));
-
-
-                    }
-
-                });
     }
 
 }

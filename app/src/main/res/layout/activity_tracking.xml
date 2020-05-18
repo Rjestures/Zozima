@@ -22,7 +22,7 @@
                 android:layout_width="30dp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_7sdp"
+               android:layout_marginTop="@dimen/_2sdp"
                 app:srcCompat="@drawable/back" />
 
             <TextView
@@ -159,75 +159,531 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:visibility="gone"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-            <!--
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-            &lt;!&ndash;
-                            <android.support.v7.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:padding="@dimen/_10sdp"
-                                android:layout_marginLeft="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                                <RelativeLayout
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content">
-                                    <ImageView
-                                        android:layout_marginLeft="@dimen/_10sdp"
-                                        android:id="@+id/ivcircle"
-                                        android:layout_width="@dimen/_10sdp"
-                                        android:layout_height="@dimen/_10sdp"
-                                        android:layout_marginTop="@dimen/_3sdp"
-                                        android:background="@drawable/ic_gray"/>
+                <RelativeLayout
+                    android:id="@+id/rl_ordered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
 
-                                    <ImageView
-                                        android:id="@+id/line1"
-                                        android:layout_below="@+id/ivcircle"
-                                        android:layout_width="@dimen/_2sdp"
-                                        android:layout_height="@dimen/_30sdp"
-                                        android:layout_alignParentTop="true"
-                                        android:layout_marginLeft="@dimen/_14sdp"
-                                        android:layout_marginTop="@dimen/_15sdp"
-                                        android:background="@mipmap/gray" />
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_marginLeft="@dimen/_30sdp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="@dimen/_15sdp"
-                                        android:text="Date"
-                                        android:textSize="@dimen/_10sdp"
-                                        android:textColor="@color/grey"
-                                        android:textStyle="bold"/>
-                                    <TextView
-                                        android:id="@+id/tvDatee"
-                                        android:layout_width="wrap_content"
-                                        android:layout_marginLeft="@dimen/_60sdp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="@dimen/_15sdp"
-                                        android:text="Date"
+                    <ImageView
+                        android:id="@+id/iv_oderCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" 
+                        />
 
-                                        android:textSize="@dimen/_10sdp"
-                                        android:textColor="@color/grey"
-                                        android:textStyle="bold"/>
+                    <ImageView
+                        android:id="@+id/iv_oderLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_oderCircle"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_oderTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Ordered"
+                        android:layout_toRightOf="@id/iv_oderCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
 
 
+                    <TextView
+                        android:id="@+id/tv_oderDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_oderTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_oderCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+                    
+                    <TextView
+                        android:id="@+id/tv_oderReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_oderDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_oderCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_shipped"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_shippedCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_shippedLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_shippedCircle"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_shippedTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Shipped"
+                        android:layout_toRightOf="@id/iv_shippedCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
 
 
-                                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_shippedDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_shippedTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_shippedCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+                    
+                    <TextView
+                        android:id="@+id/tv_shippedReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_shippedDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_shippedCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
 
-                            </android.support.v7.widget.CardView>
-            &ndash;&gt;
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_cancelCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_cancelLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_cancelCircle"
+                        android:layout_alignParentTop="true"
+                        android:visibility="invisible"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_cancelTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Cancled"
+                        android:layout_toRightOf="@id/iv_cancelCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
 
 
+                    <TextView
+                        android:id="@+id/tv_cancelDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_cancelTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_cancelCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
 
-                        </LinearLayout>
-            -->
+                    <TextView
+                        android:id="@+id/tv_cancelReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_cancelDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_cancelCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
 
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_deliver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_deliverCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_deliverLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_deliverCircle"
+                        android:layout_alignParentTop="true"
+                        android:visibility="invisible"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_deliverTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Delivered"
+                        android:layout_toRightOf="@id/iv_deliverCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tv_deliverDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_deliverTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_deliverCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_deliverReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_deliverDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_deliverCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_retReq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_retReqCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_retReqLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_retReqCircle"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_retReqTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Return Requested"
+                        android:layout_toRightOf="@id/iv_retReqCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tv_retReqDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_retReqTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_retReqCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_retReqReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_retReqDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_retReqCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_retAccept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_retAcceptCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_retAcceptLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_retAcceptCircle"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_retAcceptTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Return Approved"
+                        android:layout_toRightOf="@id/iv_retAcceptCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tv_retAcceptDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_retAcceptTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_retAcceptCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_retAcceptReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_retAcceptDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_retAcceptCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_pickUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_pickUpCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_pickUpLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_pickUpCircle"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_pickUpTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Pickup Scheduled"
+                        android:layout_toRightOf="@id/iv_pickUpCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tv_pickUpDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_pickUpTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_pickUpCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_pickUpReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_pickUpDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_pickUpCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/rl_return"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_returnCircle"
+                        android:layout_width="@dimen/_10sdp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@drawable/ic_circle_grey" />
+
+                    <ImageView
+                        android:id="@+id/iv_returnLine"
+                        android:layout_width="@dimen/_2sdp"
+                        android:visibility="invisible"
+                        android:layout_height="@dimen/_50sdp"
+                        android:layout_below="@+id/iv_returnCircle"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:background="@mipmap/greyline" />
+
+                    <TextView
+                        android:id="@+id/tv_returnTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:text="Return Completed"
+                        android:layout_toRightOf="@id/iv_returnCircle"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/tv_returnDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_returnTitle"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_toRightOf="@id/iv_returnCircle"
+                        android:text="@string/date"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_returnReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tv_returnDate"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                       android:layout_marginTop="@dimen/_2sdp"
+                        android:layout_toRightOf="@+id/iv_returnCircle"
+                         
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_10sdp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
 
